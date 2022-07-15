@@ -11,9 +11,12 @@ RUN apt-get update \
         libssl-dev
 
 # Install Go (for go-jsonnet)
-RUN curl -fsSL -o go.tar.gz https://go.dev/dl/go1.18.4.linux-arm64.tar.gz \
+RUN /bin/sh -c 'set -ex \
+    && OSARCH=`uname -m` \
+    && if [ $OSARCH = "aarch64" ]; then OSARCH="arm64"; fi \
+    && curl -fsSL -o go.tar.gz https://go.dev/dl/go1.18.4.linux-$OSARCH.tar.gz \
     && tar -C /usr/local -xzf go.tar.gz \
-    && rm go.tar.gz
+    && rm go.tar.gz'
 
 ENV CRYPTOGRAPHY_DONT_BUILD_RUST=1
 
