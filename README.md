@@ -1,5 +1,5 @@
 # pyston-kapitan
-Kapitan running on Pyston
+[Kapitan](https://kapitan.dev/) running on [Pyston](https://www.pyston.org/).
 
 Using [pyston/slim:latest](https://hub.docker.com/r/pyston/slim).
 
